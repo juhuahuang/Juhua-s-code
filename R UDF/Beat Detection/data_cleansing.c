@@ -5,10 +5,12 @@
 #include<stdio.h>
 #include "data_cleansing.h"
 #define min_sequence 250
-#define filter_size 100
+#define filter_size 10
 #define pi 3.14159
 #define sigma 10
 #define exp 2.71828
+
+#include<stdio.h>
 
 // cleansing noisy data
 // step 1: #sigma filter to original blood pressure signal
@@ -17,9 +19,9 @@
 // step 3: continuity check, remove too short sequences remained in the signal
 
 // WARNING: the times of sigmas are hard coded for setting threshold
-void data_cleansing(double* amplitude, int n){
+double* data_cleansing(double* amplitude, int n){
 	
-	gaussianFilter(amplitude,n);
+	amplitude = gaussianFilter(amplitude,n);
 
 	bool *tag = (bool*)malloc(n * sizeof(bool));
 	for(int i =0;i<n;i++) tag[i]=true;
@@ -48,7 +50,7 @@ void data_cleansing(double* amplitude, int n){
 		if( tag[i] ){
 			count++;
 			sum += amplitude[i];
-			slope_sum = slope[i];
+			slope_sum += slope[i];//add '+'
 		}
 	}
 	mean = (double) sum/count;
@@ -89,20 +91,25 @@ void data_cleansing(double* amplitude, int n){
 
 	for(int i =0;i<n;i++){
 		if(!tag[i]) amplitude[i] = INT_MIN;
-	}	
+	}
+	return amplitude;
 }
 
 
-void gaussianFilter( double *amplitude, int n){
+double* gaussianFilter( double *amplitude, int n){
 	double *filtered_amp = (double*)malloc(n * sizeof(double));
         double *filter = (double*)malloc( filter_size * sizeof(double));
+	double sum_ = 0.0;
         for( int i =0;i<filter_size;i++){
-                filter[i] = 1.0 / (sqrt(2.0 * pi) * sigma) * pow(exp,pow((double)(i-filter_size/2)/sigma,2));
-        }
+                filter[i] = 1.0 / (sqrt(2.0 * pi) * sigma) * pow(exp,-pow((double)(i-filter_size/2)/sigma,2));
+        sum_ +=filter[i];
+	}
         for(int i = 0;i< n;i++){
                 for(int j =0;j<filter_size;j++){
                         filtered_amp[i] += (i - filter_size/2 + j)<0 ? 0:amplitude[i-filter_size + j] * filter[j];
                 }
+		filtered_amp[i] =filtered_amp[i]/sum_;
         }
-	amplitude = filtered_amp;
+	return filtered_amp;
+	
 }

@@ -1,2 +1,2 @@
-void data_cleansing(double* amplitude, int n);
-void gaussianFilter( double *amplitude, int n);
+double* data_cleansing(double* amplitude, int n);
+double* gaussianFilter( double *amplitude, int n);

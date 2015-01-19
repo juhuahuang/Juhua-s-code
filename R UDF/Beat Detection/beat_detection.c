@@ -12,7 +12,9 @@
 
 void pipeline_beat_detection(double *amplitude, int *len, double *onset_point){
 	// cleansing data, set noisy signal to INT_MIN
-	data_cleansing(amplitude, *len);
+	
+	amplitude = data_cleansing(amplitude, *len);
+	
 	int count, start,onset_count = 0,current_onset_count;
 	int i = 0;
 	// detect meaningful sequence in the cleansed signal
@@ -104,7 +106,7 @@ int decision_rule(double *slope_sum, int n, double *onset_point){
 				double onset_value = max * 0.01;
 				for( onset_i=0;onset_i<numbers_in_range;onset_i++){
 					if( slope_sum[ind_order[onset_i]] > onset_value){
-						if(*onset_point == -10000) {//Hard coded problem!!!
+						if(*onset_point == -10000) {//Hard coded!!
 							*(onset_point+ onset_count) =  ind_order[onset_i];
 							onset_count++;
 						}
