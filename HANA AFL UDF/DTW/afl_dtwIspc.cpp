@@ -60,8 +60,12 @@ static void __stdcall Introspect_AppFunc1_Param(
         (char*)"I/O", 226, 0,  0, 0, 0, 0, 0, 0, 0, 0, (char*)"[ID]",
         (char*)"IN", 225, 0, 0, 0, 0, 1, 0, 0, 0, 0, (char*)"inputtable2",
         (char*)"I/O", 226, 0,  0, 0, 0, 0, 0, 0, 0, 0, (char*)"[ID]",
-        (char*)"OUT", 225, 0, 0, 0, 0, 1, 0, 0, 0, 0, (char*)"outputTable",
-        (char*)"I/O", 226, 0,  0, 0, 0, 0, 0, 0, 0, 0, (char*)"[ID]"
+        (char*)"IN", 225, 0, 0, 0, 0, 1, 0, 0, 0, 0, (char*)"inputtable3",
+        (char*)"I/O", 226, 0,  0, 0, 0, 0, 0, 0, 0, 0, (char*)"SI",
+        (char*)"OUT", 225, 0, 0, 0, 0, 1, 0, 0, 0, 0, (char*)"outputTable1",
+        (char*)"I/O", 226, 0,  0, 0, 0, 0, 0, 0, 0, 0, (char*)"[ID]",
+        (char*)"OUT", 225, 0, 0, 0, 0, 1, 0, 0, 0, 0, (char*)"outputTable2",
+        (char*)"I/O", 226, 0,  0, 0, 0, 0, 0, 0, 0, 0, (char*)"[DI][DI]"
     };
 
     if ( (ParamIdx > (sizeof(ParamDesc) / sizeof(AppFunc_ParamDesc))) || (ParamIdx < 1) )
@@ -163,7 +167,7 @@ typedef struct
 
 const AppFunc_Desc AF_Desc[] =
 {
-    1, (char*)"DTW", 6, &Introspect_AppFunc1_Param, LFunc, var_columns, 0, &Introspect_AppFunc1_Prop, (char*)""
+    1, (char*)"DTW", 10, &Introspect_AppFunc1_Param, LFunc, var_columns, 0, &Introspect_AppFunc1_Prop, (char*)""
 };
 
 /*----------------------------------------------------------------------------*/

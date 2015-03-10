@@ -15,7 +15,7 @@ DTW__Wrapper(
     void ** pParamPtr,
     int     paramCnt )
 {
-    if (paramCnt != 3)
+    if (paramCnt != 5)
     {
         return AFL_BadParamCount;
     }
@@ -34,13 +34,25 @@ DTW__Wrapper(
 
     hana::PrivateData__ data2;
     data2.representation = pParamPtr[2];
-    data2.syncBack = true;
-    hana::SharedTable param2(&data2);
+    data2.syncBack = false;
+    hana::SharedTableViewer param2(&data2);
+
+    hana::PrivateData__ data3;
+    data3.representation = pParamPtr[3];
+    data3.syncBack = true;
+    hana::SharedTable param3(&data3);
+
+    hana::PrivateData__ data4;
+    data4.representation = pParamPtr[4];
+    data4.syncBack = true;
+    hana::SharedTable param4(&data4);
 
     pIfc->DTW(
                param0
              , param1
              , param2
+             , param3
+             , param4
              );
 
     return AFL_OK;

@@ -22,7 +22,9 @@ public:
     AFLMETHOD(DTW)(
         /* in */ hana::SharedTableViewer inputtable1,
         /* in */ hana::SharedTableViewer inputtable2,
-        /* out */ hana::SharedTable outputTable ) const = 0;
+        /* in */ hana::SharedTableViewer inputtable3,
+        /* out */ hana::SharedTable outputTable1,
+        /* out */ hana::SharedTable outputTable2 ) const = 0;
 };
 
 static const hana::AFLTech::AFLID DTWAFL_CLSID = { 0x900AB60B, 0x8D93, 0x4536, { 0xB2, 0x54, 0x21, 0xC3, 0x42, 0x46, 0x59, 0x54 } };

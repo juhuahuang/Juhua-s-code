@@ -19,12 +19,15 @@
             <VARCOLUMNS EXPRESSION="[ID]"/>
         </PARAM>
 
-
+	<PARAM NAME="inputtable3" DIRECTION="in" TYPE="HANATABLE">
+            <VARCOLUMNS EXPRESSION="SI"/>
+        </PARAM>
+		
         <PARAM NAME="outputTable1" DIRECTION="out" TYPE="HANATABLE">
             <VARCOLUMNS EXPRESSION="[ID]"/>
         </PARAM>
 		<PARAM NAME="outputTable2" DIRECTION="out" TYPE="HANATABLE">
-            <VARCOLUMNS EXPRESSION="DD"/>
+            <VARCOLUMNS EXPRESSION="[DI][DI]"/>
         </PARAM>
     </LFUNC>
 
