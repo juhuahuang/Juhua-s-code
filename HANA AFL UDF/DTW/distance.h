@@ -30,7 +30,7 @@ class DistanceFactory{
         static DistanceFunction* EuclideanDistance_FN ;
         static DistanceFunction* BinaryDistance_FN;
 
-        static DistanceFunction* getDistFunctionbyName(string distName){
+        static DistanceFunction* getDistFunctionbyName(const string& distName){
                 transform(distName.begin(),distName.end(),distName.begin(),::tolower);
                 if( distName == "euclidean") return EuclideanDistance_FN;
                 else if ( distName == "binary") return BinaryDistance_FN;
