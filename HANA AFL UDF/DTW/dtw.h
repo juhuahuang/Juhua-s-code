@@ -45,7 +45,7 @@ public:
    
 
     AFLMETHOD(DTW)(hana::SharedTableViewer,hana::SharedTableViewer, hana::SharedTableViewer,
-                                            hana::SharedTable,hana::SharedTable) const;
+                                            hana::SharedTable) const;
 
    
 };

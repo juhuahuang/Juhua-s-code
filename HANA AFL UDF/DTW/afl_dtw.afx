@@ -26,9 +26,6 @@
         <PARAM NAME="outputTable1" DIRECTION="out" TYPE="HANATABLE">
             <VARCOLUMNS EXPRESSION="[ID]"/>
         </PARAM>
-		<PARAM NAME="outputTable2" DIRECTION="out" TYPE="HANATABLE">
-            <VARCOLUMNS EXPRESSION="[DI][DI]"/>
-        </PARAM>
     </LFUNC>
 
    
